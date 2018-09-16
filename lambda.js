@@ -30,17 +30,17 @@ const isZero = first
 const numbersEqual = x => y => cond(isZero(x))
                                    (_ => isZero(y))
                                    (_ => cond(isZero(y))
-                                        (_ => boolFalse)
-                                        (_ => numbersEqual(pred(x))(pred(y))))
+                                             (_ => boolFalse)
+                                             (_ => numbersEqual(pred(x))(pred(y))))
 
-const modLoop = number => modulator => result =>
+const modLoop = result => number => modulator =>
     cond(isZero(number))
         (_ => result)
         (_ => cond(numbersEqual(modulator)(succ(result)))
-                  (_ => modLoop(pred(number))(modulator)(zero))
-                  (_ => modLoop(pred(number))(modulator)(succ(result))))
+                  (_ => modLoop(zero)(pred(number))(modulator))
+                  (_ => modLoop(succ(result))(pred(number))(modulator)))
 
-const mod = number => modulator => modLoop(number)(modulator)(zero)
+const mod = modLoop(zero)
 
 const one      = succ(zero)
 const two      = succ(one)
