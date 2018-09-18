@@ -1,0 +1,19 @@
+{
+  "name": "lambda-calculus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "fizzbuzz.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "MIT"
+}
