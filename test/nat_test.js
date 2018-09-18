@@ -39,4 +39,18 @@ describe('nat', () => {
             assert.isTrue(boolJS.toJS(nat.numbersEqual(nat.five)(nat.five)));
         });
     });
+
+    describe('add', () => {
+        it('adds two numbers', () => {
+            assert.equal(natJS.toJS(nat.add(nat.two)(nat.four)), 6);
+            assert.equal(natJS.toJS(nat.add(nat.three)(nat.seven)), 10);
+        });
+    });
+
+    describe('multiply', () => {
+        it('multiplies numbers', () => {
+            assert.equal(natJS.toJS(nat.multiply(nat.two)(nat.five)), 10);
+            assert.equal(natJS.toJS(nat.multiply(nat.three)(nat.three)), 9);
+        });
+    });
 });

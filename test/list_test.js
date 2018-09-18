@@ -1,3 +1,6 @@
+'use strict';
+
+const nat = require('../lib/pure/nat');
 const list = require('../lib/pure/list');
 const listJS = require('../lib/integration/list');
 const boolJS = require('../lib/integration/bool');
@@ -29,6 +32,14 @@ describe('list', () => {
             const xs = listJS.fromJS(['a', 'b', 'c']);
 
             assert.equal(list.foldl(acc => val => acc + val)('')(xs), 'cba');
+        });
+    });
+
+    describe('map', () => {
+        it('returns the transformed list', () => {
+            const xs = listJS.fromJS([1, 2, 3, 4]);
+
+            assert.deepEqual(listJS.toJS(list.map(x => x + 1)(xs)), [2, 3, 4, 5]);
         });
     });
 
