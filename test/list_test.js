@@ -21,17 +21,17 @@ describe('list', () => {
 
     describe('foldr', () => {
         it('returns folds to a single value', () => {
-            const xs = listJS.fromJS(['a', 'b', 'c']);
+            const xs = listJS.fromJS(['a', 'b', 'c', 'd', 'e']);
 
-            assert.equal(list.foldr(acc => val => acc + val)('')(xs), 'abc');
+            assert.equal(list.foldr(acc => val => val + acc)('123')(xs), 'abcde123');
         });
     });
 
     describe('foldl', () => {
         it('returns folds to a single value', () => {
-            const xs = listJS.fromJS(['a', 'b', 'c']);
+            const xs = listJS.fromJS(['a', 'b', 'c', 'd', 'e']);
 
-            assert.equal(list.foldl(acc => val => acc + val)('')(xs), 'cba');
+            assert.equal(list.foldl(acc => val => val + acc)('123')(xs), 'edcba123');
         });
     });
 
@@ -43,9 +43,20 @@ describe('list', () => {
         });
     });
 
-    describe('toJS', () => {
-        const xs = list.cons(1)(list.cons(2)(list.nil));
+    describe('concat', () => {
+        it('returns the concatenated list', () => {
+            const xs = listJS.fromJS([1, 2]);
+            const ys = listJS.fromJS([3, 4, 5]);
 
-        assert.deepEqual(listJS.toJS(xs), [1, 2]);
+            assert.deepEqual(listJS.toJS(list.concat(xs)(ys)), [1, 2, 3, 4, 5]);
+        });
+    });
+
+    describe('toJS', () => {
+        it('returns a JS array', () => {
+            const xs = list.cons(1)(list.cons(2)(list.nil));
+
+            assert.deepEqual(listJS.toJS(xs), [1, 2]);
+        });
     });
 });
