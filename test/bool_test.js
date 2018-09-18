@@ -5,7 +5,7 @@ const assert = require('chai').assert;
 const bool = require('../lib/pure/bool');
 const boolJS = require('../lib/integration/bool');
 
-describe('core', () => {
+describe('bool', () => {
     describe('boolJS.toJS', () => {
         it('returns true for bool.true', () => {
             assert.isTrue(boolJS.toJS(bool.true));
