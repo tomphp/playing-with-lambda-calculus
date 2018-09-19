@@ -52,6 +52,13 @@ describe('list', () => {
         });
     });
 
+    describe('singleton', () => {
+        it('returns a singleton list', () => {
+            assert.deepEqual(listJS.toJS(list.singleton(1)), [1]);
+            assert.deepEqual(listJS.toJS(list.singleton(5)), [5]);
+        });
+    });
+
     describe('toJS', () => {
         it('returns a JS array', () => {
             const xs = list.cons(1)(list.cons(2)(list.nil));
